@@ -13,4 +13,9 @@ import jeasy from '../src/index';
     //
     //
     // const d3 = jeasy.moment(new Date());
+
+
+    document.querySelector('#copyAction').addEventListener('click', () => {
+        jeasy.copyText(document.querySelector('#copyText').value);
+    });
 })();

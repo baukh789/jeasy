@@ -23,12 +23,12 @@ class Moment {
 
             // 当前为时间对象
             case 'object': {
-                this.parseDate(value.constructor === Date ? value : new Date(value));
+                this.parseDate(value.constructor === Date ? value : new Date());
                 break;
             }
 
             default: {
-                this.parseDate(new Date(value));
+                this.parseDate(new Date());
                 break;
             }
         }
@@ -97,13 +97,13 @@ class Moment {
      */
     format(format) {
         return format
-        .replace(/YYYY/i, this.fullYear || '')
-        .replace(/YY/i, this.year || '')
-        .replace(/MM/, this.month || '')
-        .replace(/DD/i, this.date || '')
-        .replace(/HH/i, this.hour || '')
-        .replace(/mm/, this.minute || '')
-        .replace(/ss/i, this.second || '');
+        .replace(/YYYY/i, this.fullYear)
+        .replace(/YY/i, this.year)
+        .replace(/MM/, this.month)
+        .replace(/DD/i, this.date)
+        .replace(/HH/i, this.hour)
+        .replace(/mm/, this.minute)
+        .replace(/ss/i, this.second);
     }
 }
 const moment = value => {

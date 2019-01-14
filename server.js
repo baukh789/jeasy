@@ -20,6 +20,11 @@ app.use(/\/$/, function (req, res) {
     res.redirect('/demo/index.html');
 });
 
+// 配置coverage路径
+app.use(/\/coverage$/, function (req, res) {
+    res.redirect('/coverage/chart/index.html');
+});
+
 // 配置资源路径√
 app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.static(__dirname));
