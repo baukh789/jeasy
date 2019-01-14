@@ -14,6 +14,7 @@ npm install jeasy --save
 ## 方法介绍
 ### Date `日期相关`
 #### jeasy.moment() `日期函数`
+> jeasy.moment并不对时区进行处理，如果有需要使用时区的请直接使用[moment](https://www.npmjs.com/package/moment)库。
 
 ```javascript
 // number格式的年月日

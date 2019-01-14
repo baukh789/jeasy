@@ -93,34 +93,40 @@ describe('moment(value)', () => {
     });
 
     it('moment(1547285063173)', () => {
+        let now = new Date(1547285063173);
         date = moment(1547285063173);
-        expect(date.fullYear).toBe(2019);
-        expect(date.month).toBe(1);
-        expect(date.date).toBe(12);
-        expect(date.hour).toBe(17);
-        expect(date.minute).toBe(24);
-        expect(date.second).toBe(23);
-        expect(date.day).toBe(6);
+        expect(date.fullYear).toBe(now.getFullYear());
+        expect(date.month).toBe(now.getMonth() + 1);
+        expect(date.date).toBe(now.getDate());
+        expect(date.hour).toBe(now.getHours());
+        expect(date.minute).toBe(now.getMinutes());
+        expect(date.second).toBe(now.getSeconds());
+        expect(date.day).toBe(now.getDay());
     });
 
     it('moment(new Date(1547285063173))', () => {
+        let now = new Date(1547285063173);
         date = moment(new Date(1547285063173));
-        expect(date.fullYear).toBe(2019);
-        expect(date.month).toBe(1);
-        expect(date.date).toBe(12);
-        expect(date.hour).toBe(17);
-        expect(date.minute).toBe(24);
-        expect(date.second).toBe(23);
+        expect(date.fullYear).toBe(now.getFullYear());
+        expect(date.month).toBe(now.getMonth() + 1);
+        expect(date.date).toBe(now.getDate());
+        expect(date.hour).toBe(now.getHours());
+        expect(date.minute).toBe(now.getMinutes());
+        expect(date.second).toBe(now.getSeconds());
+        expect(date.day).toBe(now.getDay());
+        now = null;
     });
 
     it('moment(new Date("Sat Jan 12 2019 17:24:23 GMT+0800 (中国标准时间)"))', () => {
+        let now = new Date('Sat Jan 12 2019 17:24:23 GMT+0800 (中国标准时间)');
         date = moment(new Date('Sat Jan 12 2019 17:24:23 GMT+0800 (中国标准时间)'));
-        expect(date.fullYear).toBe(2019);
-        expect(date.month).toBe(1);
-        expect(date.date).toBe(12);
-        expect(date.hour).toBe(17);
-        expect(date.minute).toBe(24);
-        expect(date.second).toBe(23);
+        expect(date.fullYear).toBe(now.getFullYear());
+        expect(date.month).toBe(now.getMonth() + 1);
+        expect(date.date).toBe(now.getDate());
+        expect(date.hour).toBe(now.getHours());
+        expect(date.minute).toBe(now.getMinutes());
+        expect(date.second).toBe(now.getSeconds());
+        now = null;
     });
 
     it('moment()', () => {
@@ -143,23 +149,41 @@ describe('moment(value)', () => {
 });
 
 describe('moment(value).format(format)', () =>  {
+    // 这里不去验证时区， 所以这里的测试需要通过 Date来验证
+    let now = new Date(1547285063173);
+    let fullYeay = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let date = now.getDate();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+    let second = now.getSeconds();
+
+    afterAll(() => {
+        now = null;
+        fullYeay = null;
+        month = null;
+        date = null;
+        hour = null;
+        minute = null;
+        second = null;
+    });
     it('moment(1547285063173).format("YYYY年MM月DD日")', () => {
-        expect(moment(1547285063173).format('YYYY年MM月DD日')).toBe('2019年1月12日');
+        expect(moment(1547285063173).format('YYYY年MM月DD日')).toBe(`${fullYeay}年${month}月${date}日`);
     });
 
     it('moment(1547285063173).format("YYYY年MM月DD日HH时mm分ss秒")', () => {
-        expect(moment(1547285063173).format('YYYY年MM月DD日HH时mm分ss秒')).toBe('2019年1月12日17时24分23秒');
+        expect(moment(1547285063173).format('YYYY年MM月DD日HH时mm分ss秒')).toBe(`${fullYeay}年${month}月${date}日${hour}时${minute}分${second}秒`);
     });
 
     it('moment(1547285063173).format("YYYY/MM/DD HH:mm:ss")', () => {
-        expect(moment(1547285063173).format('YYYY/MM/DD HH:mm:ss')).toBe('2019/1/12 17:24:23');
+        expect(moment(1547285063173).format('YYYY/MM/DD HH:mm:ss')).toBe(`${fullYeay}/${month}/${date} ${hour}:${minute}:${second}`);
     });
 
     it('moment(1547285063173).format("YYYY-MM-DD HH:mm:ss")', () => {
-        expect(moment(1547285063173).format('YYYY-MM-DD HH:mm:ss')).toBe('2019-1-12 17:24:23');
+        expect(moment(1547285063173).format('YYYY-MM-DD HH:mm:ss')).toBe(`${fullYeay}-${month}-${date} ${hour}:${minute}:${second}`);
     });
 
     it('moment(1547285063173).format("yyyy-MM-dd hh:mm:ss")', () => {
-        expect(moment(1547285063173).format('yyyy-MM-dd hh:mm:ss')).toBe('2019-1-12 17:24:23');
+        expect(moment(1547285063173).format('yyyy-MM-dd hh:mm:ss')).toBe(`${fullYeay}-${month}-${date} ${hour}:${minute}:${second}`);
     });
 });
