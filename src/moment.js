@@ -56,15 +56,8 @@ class Moment {
             return;
         }
 
-
-        this.fullYear = parseInt(ds.fullYear_str);
-        this.year = parseInt(ds.year_str);
-        this.month = parseInt(ds.month_str);
-        this.date = parseInt(ds.date_str);
-        this.hour = ds.hour_str ? parseInt(ds.hour_str) : 0;
-        this.minute = ds.minute_str ? parseInt(ds.minute_str) : 0;
-        this.second = ds.second_str ? parseInt(ds.second_str) : 0;
-        // this.day = date.getDay();
+        const datastr = `${ds.fullYear_str}/${ds.month_str}/${ds.date_str} ${ds.hour_str || '00'}:${ds.minute_str || '00'}:${ds.second_str || '00'}`;
+        this.parseDate(new Date(datastr));
     }
 
     /**
@@ -72,13 +65,28 @@ class Moment {
      * @param date
      */
     parseDate(date) {
+        // 年: 四位制
         this.fullYear = date.getFullYear();
+
+        // 年: 两位制
         this.year = parseInt(date.getFullYear().toString().substr(2, 2));
+
+        // 月
         this.month = date.getMonth() + 1;
+
+        // 日
         this.date = date.getDate();
+
+        // 小时
         this.hour = date.getHours();
+
+        // 分
         this.minute = date.getMinutes();
+
+        // 秒
         this.second = date.getSeconds();
+
+        // 星期
         this.day = date.getDay();
     }
 

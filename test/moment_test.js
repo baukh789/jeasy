@@ -10,10 +10,18 @@ describe('moment(value)', function() {
 
     it('moment(19871122)', function(){
         date = moment(19871122);
-        console.log(date);
         expect(date.fullYear).toBe(1987);
         expect(date.month).toBe(11);
         expect(date.date).toBe(22);
+        expect(date.day).toBe(0);
+    });
+
+    it('moment(20190112)', function(){
+        date = moment(20190112);
+        expect(date.fullYear).toBe(2019);
+        expect(date.month).toBe(1);
+        expect(date.date).toBe(12);
+        expect(date.day).toBe(6);
     });
 
     it('moment(19871122102030)', function(){
@@ -76,6 +84,26 @@ describe('moment(value)', function() {
 
     it('moment(1547285063173)', function(){
         date = moment(1547285063173);
+        expect(date.fullYear).toBe(2019);
+        expect(date.month).toBe(1);
+        expect(date.date).toBe(12);
+        expect(date.hour).toBe(17);
+        expect(date.minute).toBe(24);
+        expect(date.second).toBe(23);
+    });
+
+    it('moment(new Date(1547285063173))', function(){
+        date = moment(new Date(1547285063173));
+        expect(date.fullYear).toBe(2019);
+        expect(date.month).toBe(1);
+        expect(date.date).toBe(12);
+        expect(date.hour).toBe(17);
+        expect(date.minute).toBe(24);
+        expect(date.second).toBe(23);
+    });
+
+    it('moment(new Date("Sat Jan 12 2019 17:24:23 GMT+0800 (中国标准时间)"))', function(){
+        date = moment(new Date('Sat Jan 12 2019 17:24:23 GMT+0800 (中国标准时间)'));
         expect(date.fullYear).toBe(2019);
         expect(date.month).toBe(1);
         expect(date.date).toBe(12);
