@@ -28,7 +28,8 @@ const config = {
 	// 文件导出的配置
 	output:{
 		path: buildPath ,
-		filename: "index.js"
+		filename: "index.js",
+        libraryTarget: "umd"
 	},
 
 	// 以插件形式定制webpack构建过程
