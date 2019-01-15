@@ -1,7 +1,7 @@
 # jeasy
 > javascript easy tool
 
-[![Build Status](https://img.shields.io/travis/baukh789/jeasy.svg?style=flat-square)](https://travis-ci.org/baukh789/jeasy)
+[![Build Status](https://travis-ci.com/baukh789/jeasy.svg?branch=master)](https://travis-ci.com/baukh789/jeasy)
 [![npm version](https://img.shields.io/npm/v/jeasy.svg?style=flat-square)](https://www.npmjs.com/package/jeasy)
 [![npm downloads](https://img.shields.io/npm/dt/jeasy.svg?style=flat-square)](https://www.npmjs.com/package/jeasy)
 [![coverage](https://img.shields.io/codecov/c/github/baukh789/jeasy.svg?style=flat-square)](https://codecov.io/gh/baukh789/jeasy)
