@@ -163,7 +163,7 @@ jeasy.getTextWidth('测试宽度'); // 48
 ### File `文件相关`
 #### jeasy.download(response, fileName);
 ```javascript
-// @param response: 后端返回blob数据
+// @param response: 通过后端接口返回二进制流(blob)。response允许两种格式: 1.blob; 2.{data: blob};
 // @param fileName: 文件名称
 jeasy.download(response, fileName); // 文件下载
 
