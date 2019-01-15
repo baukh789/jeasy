@@ -150,10 +150,14 @@ jeasy.copyText('font-size'); // 粘贴板中的值为font-size
 ```
 
 #### jeasy.getTextWidth(text) `获取文本所占宽度`
-> 需要注意: 获取的宽度与当前document.body上所设置的`font-size`, `font-weight`, `font-family`有关。
 ```javascript
-jeasy.getTextWidth('aaa'); // 21
-jeasy.getTextWidth('测试宽度'); // 64
+// 需要注意: 获取的宽度与当前document.body上所设置的`font-size`, `font-weight`, `font-family`有关。
+document.body.style.fontSize = '12px';
+document.body.style.fontFamily = 'Tahoma';
+document.body.style.fontWeight = '400';
+
+jeasy.getTextWidth('aaa'); // 18
+jeasy.getTextWidth('测试宽度'); // 48
 ```
 ## License
 - [License](/LICENSE)

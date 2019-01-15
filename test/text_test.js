@@ -12,7 +12,10 @@ describe('copyText', () => {
 
 describe('getTextWidth', () => {
     it('执行验证', () => {
-        expect(getTextWidth('aaa')).toBe(21);
-        expect(getTextWidth('测试宽度')).toBe(64);
+        document.body.style.fontSize = '12px';
+        document.body.style.fontFamily = 'Tahoma';
+        document.body.style.fontWeight = '400';
+        expect(getTextWidth('aaa')).toBe(18);
+        expect(getTextWidth('测试宽度')).toBe(48);
     });
 });
