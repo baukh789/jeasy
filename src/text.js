@@ -17,3 +17,25 @@ export const copyText = text => {
     ele.remove();
     return isSuccess;
 };
+
+/**
+ * 获取文本所占宽度
+ * @param text
+ * @returns {number}
+ */
+export const getTextWidth = text => {
+    const overId = 'jeasy-over-size-div';
+    let overSizeDiv = document.getElementById(overId);
+    if (!overSizeDiv) {
+        const ele = document.createElement('div');
+        ele.style.position = 'absolute';
+        ele.style.top = '0';
+        ele.style.zIndex = '-10';
+        ele.style.visibility = 'hidden';
+        ele.id = overId;
+        document.body.appendChild(ele);
+        overSizeDiv = document.getElementById(overId);
+    }
+    overSizeDiv.innerText = text;
+    return parseInt(window.getComputedStyle(overSizeDiv).width, 10);
+};

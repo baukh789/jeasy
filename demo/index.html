@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .renderDiv{
+            min-height: 100px;
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            font-size: 12px;
+        }
+        li {
+            list-style-type: none;
+        }
+    </style>
 </head>
 <body>
 <input id="copyText">
 <button id="copyAction">复制</button>
+<ul class="renderDiv"></ul>
 <script src="/webpack-dev-file/js/index.js"></script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 import jeasy from '../src/index';
 (() => {
+    const renderDiv = document.querySelector('.renderDiv');
+    let li = null;
     const d = jeasy.moment(19871122);
     console.log(d);
     console.log(`${d.fullYear}年${d.month}月${d.date}日`);
@@ -17,5 +19,12 @@ import jeasy from '../src/index';
 
     document.querySelector('#copyAction').addEventListener('click', () => {
         jeasy.copyText(document.querySelector('#copyText').value);
+        li = document.createElement('li');
+        li.innerHTML = `已经将[${document.querySelector('#copyText').value}]放至粘贴板`;
+        renderDiv.appendChild(li);
+
+        li = document.createElement('li');
+        li.innerHTML = '当前文本宽度所占像素为: ' +  jeasy.getTextWidth(document.querySelector('#copyText').value);
+        renderDiv.appendChild(li);
     });
 })();

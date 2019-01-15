@@ -1,5 +1,5 @@
 'use strict';
-import { copyText } from '../src/text';
+import { copyText, getTextWidth } from '../src/text';
 
 describe('copyText', () => {
     it('执行验证', () => {
@@ -10,3 +10,9 @@ describe('copyText', () => {
     });
 });
 
+describe('getTextWidth', () => {
+    it('执行验证', () => {
+        expect(getTextWidth('aaa')).toBe(21);
+        expect(getTextWidth('测试宽度')).toBe(64);
+    });
+});
