@@ -159,5 +159,14 @@ document.body.style.fontWeight = '400';
 jeasy.getTextWidth('aaa'); // 18
 jeasy.getTextWidth('测试宽度'); // 48
 ```
+
+### File `文件相关`
+#### jeasy.download(response, fileName);
+```javascript
+// @param response: 后端返回blob数据
+// @param fileName: 文件名称
+jeasy.download(response, fileName); // 文件下载
+
+```
 ## License
 - [License](/LICENSE)
