@@ -33,9 +33,9 @@ jeasy.moment('1988-01-02 12:12:22');
 jeasy.moment(1547285063173);
 
 // format
-jeasy.moment(1547285063173).format("YYYY-MM-DD"); // 2019-1-12
-jeasy.moment(1547285063173).format("YYYY年MM月DD日"); // 2019年1月12日
-jeasy.moment(1547285063173).format("YYYY-MM-DD HH:mm:ss"); // 2019-1-12 17:24:23
+jeasy.moment(1547285063173).format("YYYY-MM-DD"); // 2019-01-12
+jeasy.moment(1547285063173).format("YYYY年MM月DD日"); // 2019年01月12日
+jeasy.moment(1547285063173).format("YYYY-MM-DD HH:mm:ss"); // 2019-01-12 17:24:23
 
 // 获取年月日
 jeasy.moment(1547285063173).fullYear; // 2019
