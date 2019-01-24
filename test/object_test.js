@@ -1,5 +1,5 @@
 'use strict';
-import { equal, index, clone, isEmpty, type, trim } from '../src/object';
+import { equal, index, clone, isEmpty, type, trim, find } from '../src/object';
 
 describe('equal', () => {
     it('验证对象', () => {
@@ -57,6 +57,24 @@ describe('index', () => {
         expect(index(arr, o1)).toBe(1);
         expect(index(arr, o2)).toBe(-1);
         expect(index(arr, o3)).toBe(0);
+    });
+});
+
+
+describe('find', () => {
+    let arr = null;
+    beforeEach(() =>  {
+        arr = [{name: 'baukh', age: 31}, {name: 'cc', age: 30}, {name: 'kouz', age: 29}, {name: 'rabbit', age: 28}];
+    });
+
+    afterEach(() =>  {
+        arr = null;
+    });
+
+    it('返回值验证', () => {
+        expect(find(arr, 'name', 'baukh').length).toBe(1);
+        expect(find(arr, 'age', 30).length).toEqual(1);
+        expect(find(arr, 'age', 33).length).toEqual(0);
     });
 });
 

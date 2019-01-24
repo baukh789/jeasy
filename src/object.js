@@ -31,6 +31,20 @@ export const index = (arr, obj) => {
     return index;
 };
 
+/**
+ * 通过指定字段筛选Array
+ * @param arr: 匹配的数据
+ * @param key: 用来做验证的字段名
+ * @param platCode: 匹配的值
+ * @returns array
+ */
+export const find = (arr, key, platCode) => {
+    return arr.filter(item => {
+        if (item[key] === platCode) {
+            return item;
+        }
+    });
+};
 
 /**
  * clone 对象, 对 JSON.stringify 存在丢失的类型(如function)不作处理。

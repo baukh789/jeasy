@@ -7,7 +7,8 @@
     "report-coverage": "codecov",
     "start": "node server",
     "lint": "eslint src/js/",
-    "test": "cross-env NODE_ENV=test karma start",
+    "test": "NODE_ENV=test karma start",
+    "test:win": "cross-env NODE_ENV=test karma start",
     "build": "webpack --config webpack-config.js"
   },
   "repository": {

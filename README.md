@@ -84,6 +84,14 @@ jeasy.index(arr, o2); // -1
 jeasy.index(arr, o3); // 0
 ```
 
+#### jeasy.find(array, key, value) `通过指定字段筛选Array`
+```javascript
+const arr = [{name: 'baukh', age: 31}, {name: 'cc', age: 30}, {name: 'kouz', age: 29}, {name: 'rabbit', age: 28}];
+jeasy.find(arr, 'name', 'baukh'); // [{name: 'baukh', age: 31}]
+jeasy.find(arr, 'age', 29); // [{name: 'kouz', age: 29}]
+jeasy.find(arr, 'age', 33); // []
+```
+
 #### jeasy.clone(obj) `clone 对象`
 > 对 JSON.stringify 存在丢失的类型(如function)不作处理。
 
