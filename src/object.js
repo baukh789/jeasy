@@ -35,12 +35,12 @@ export const index = (arr, obj) => {
  * 通过指定字段筛选Array
  * @param arr: 匹配的数据
  * @param key: 用来做验证的字段名
- * @param platCode: 匹配的值
+ * @param value: 匹配的值
  * @returns array
  */
-export const find = (arr, key, platCode) => {
+export const find = (arr, key, value) => {
     return arr.filter(item => {
-        if (item[key] === platCode) {
+        if (item[key] === value) {
             return item;
         }
     });

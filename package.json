@@ -1,6 +1,6 @@
 {
   "name": "jeasy",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "javascript easy tool",
   "main": "index.js",
   "scripts": {
