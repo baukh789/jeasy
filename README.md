@@ -168,6 +168,30 @@ jeasy.getTextWidth('aaa'); // 18
 jeasy.getTextWidth('测试宽度'); // 48
 ```
 
+### Number `数字相关`
+#### jeasy.toPercentile(value, decimal, fixed) `浮点数转换百分位`
+```javascript
+// @param value: 需要转换的数值
+// @param decimal: 保留小数点位数
+// @param fixed: 是否强制保留decimal指定的位数
+// @returns {*}: 返回百分位格式的字符串
+jeasy.toPercentile(0.1230123, 1); // '12.3%'
+jeasy.toPercentile(0.1230123, 2); // '12.30%'
+jeasy.toPercentile(0.1230123, 2, false); // '12.3%'
+```
+
+#### jeasy.toThousands(value, decimal, fixed) `浮点数转换千分位`
+```javascript
+// @param value: 需要转换的数值
+// @param decimal: 保留小数点位数
+// @param fixed: 是否强制保留decimal指定的位数
+// @returns {*}: 返回千分位格式的字符串
+jeasy.toThousands(value, 1); // '123.0‰'
+jeasy.toThousands(value, 1, false); // '123‰'
+jeasy.toThousands(value, 2); // '123.01‰'
+jeasy.toThousands(value, 2, false); // '123.01‰'
+```
+
 ### File `文件相关`
 #### jeasy.download(response, fileName);
 ```javascript
