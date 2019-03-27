@@ -21,3 +21,18 @@ export const toHump = text => {
 export const toHyphen = text => {
     return text.replace(/([A-Z])/g, '-$1').toLowerCase();
 };
+
+/**
+ * queryString转化为formData
+ * @param {String} queryString 
+ * @param {String} delimiter 
+ */
+export function toFormData(queryString, delimiter = '&') {
+    const str = queryString.replace(/^\?/, '');
+    const arr = str.split(delimiter);
+
+    return arr.reduce((result, current) => {
+        const [key, value = ''] = current.split('=');
+        return { ...result, [key]: value };
+    }, {})
+}
