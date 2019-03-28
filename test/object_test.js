@@ -1,5 +1,5 @@
 'use strict';
-import { equal, index, clone, isEmpty, type, trim, toQueryString } from '../src/object';
+import { equal, index, find, clone, isEmpty, type, trim, toQueryString } from '../src/object';
 
 describe('equal', () => {
     it('验证对象', () => {
