@@ -1,6 +1,6 @@
 import moment from './moment';
-import { equal, index, clone, isEmpty, type, trim } from './object';
-import { toHump, toHyphen } from './string';
+import { equal, index, clone, isEmpty, type, trim, toQueryString } from './object';
+import { toHump, toHyphen, toFormData } from './string';
 import { copyText, getTextWidth } from './text';
 import { download } from './file';
 
@@ -15,8 +15,10 @@ export default {
     isEmpty,
     type,
     trim,
+    toQueryString,
     toHump,
     toHyphen,
+    toFormData,
     download
 };
 

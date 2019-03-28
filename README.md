@@ -130,6 +130,9 @@ jeasy.trim(o); // {name: 'kouzi', age: 28, gender: 0}
 // 传参为字符串
 let o = '  baukh  ';
 jeasy.trim(o); // baukh
+
+// object的形式转换为querystring
+jeasy.toQueryString({ name:'zhangsan', age: 12 }); // 'name=zhangsan&age=12'
 ```
 
 ### String `字符串相关`
@@ -141,6 +144,11 @@ jeasy.toHump('font-size'); //fontSize
 #### jeasy.toHyphen(str); `驼峰转连字符`
 ```javascript
 jeasy.toHyphen('FontSize'); // -font-size
+```
+
+### jeasy.toFormData(str) `queryString的形式解析成对象`
+```javascript
+jeasy.toFormData('name=zhangsan&age=22&gender=male') //{name:'zhangsan', age: '22', gender:'male'}
 ```
 
 ### Text `文本相关`

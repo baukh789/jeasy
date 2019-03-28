@@ -32,7 +32,9 @@ export function toFormData(queryString, delimiter = '&') {
     const arr = str.split(delimiter);
 
     return arr.reduce((result, current) => {
-        const [key, value = ''] = current.split('=');
+        let [key, value = ''] = current.split('=');
+        value = decodeURIComponent(value);
+
         return { ...result, [key]: value };
     }, {})
 }
