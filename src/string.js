@@ -24,9 +24,9 @@ export const toHyphen = text => {
 
 /**
  * queryString转化为formData
- * @param {String} queryString 
+ * @param {String} queryString
  */
-export function toFormData(queryString) {
+export const toFormData = queryString => {
     const str = queryString.replace(/^\?/, '');
     const arr = str.split('&');
 
@@ -34,5 +34,5 @@ export function toFormData(queryString) {
         let [key, value = ''] = current.split('=');
 
         return { ...result, [key]: value };
-    }, {})
-}
+    }, {});
+};
