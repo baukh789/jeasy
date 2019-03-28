@@ -1,5 +1,5 @@
 'use strict';
-import { toHump, toHyphen } from '../src/string';
+import { toHump, toHyphen, toFormData } from '../src/string';
 
 describe('toHump', () => {
     it('返回值验证', () => {
@@ -21,3 +21,9 @@ describe('toHyphen', () => {
     });
 });
 
+describe('toFormData', () => {
+    it('测试效果', () => {
+        expect(toFormData('name=zhangsan&age=22&gender=male')).toEqual({name:'zhangsan', age: '22', gender:'male'});
+        expect(toFormData('?name=zhangsan&age=22&gender=male')).toEqual({name:'zhangsan', age: '22', gender:'male'});
+    })
+});

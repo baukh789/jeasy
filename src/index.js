@@ -17,8 +17,10 @@ export default {
     isEmpty,
     type,
     trim,
+    toQueryString,
     toHump,
     toHyphen,
+    toFormData,
     toPercentile,
     toThousands,
     download

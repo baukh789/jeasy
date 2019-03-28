@@ -1,5 +1,5 @@
 'use strict';
-import { equal, index, clone, isEmpty, type, trim, find } from '../src/object';
+import { equal, index, clone, isEmpty, type, trim, toQueryString } from '../src/object';
 
 describe('equal', () => {
     it('验证对象', () => {
@@ -151,5 +151,15 @@ describe('trim', () => {
         expect(trim(o)).toEqual({name: 'kouzi', age: 28, gender: 0});
 
         o = null;
+    });
+});
+
+
+describe('toQueryString', () => {
+    it('验证queryString转换效果', () => {
+        const obj1 = { name:'zhangsan', age: 12 };
+        const obj2 = { name: 'zhangsan', params: { name: 'zhangsan', age: 12 }, page: { currentPage: 1, pageSize: 10 }, other: null };
+        expect(toQueryString(obj1)).toBe('name=zhangsan&age=12');
+        expect(toQueryString(obj2)).toBe('name=zhangsan&params=%7B%22name%22%3A%22zhangsan%22%2C%22age%22%3A12%7D&page=%7B%22currentPage%22%3A1%2C%22pageSize%22%3A10%7D')
     });
 });

@@ -118,3 +118,21 @@ export const trim = obj => {
         return prev;
     }, {});
 };
+
+
+/**
+ * Object转换为queryString
+ * @param {Object} formData 
+ * @param {String} delimiter 
+ */
+export function toQueryString(formData, delimiter = '&') {
+    const rs = Object.keys(formData).reduce((result, key) => {
+        let value = formData[key];
+        if (value == null) return result;
+
+        value = typeof value === 'object' ? JSON.stringify(value) : value; // 处理参数为对象的形式
+        value = encodeURIComponent(value);
+        return `${result}${delimiter}${key}=${value}`
+    }, '');
+    return rs.replace(delimiter, '');
+}
