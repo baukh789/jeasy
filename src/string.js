@@ -25,15 +25,13 @@ export const toHyphen = text => {
 /**
  * queryString转化为formData
  * @param {String} queryString 
- * @param {String} delimiter 
  */
-export function toFormData(queryString, delimiter = '&') {
+export function toFormData(queryString) {
     const str = queryString.replace(/^\?/, '');
-    const arr = str.split(delimiter);
+    const arr = str.split('&');
 
     return arr.reduce((result, current) => {
         let [key, value = ''] = current.split('=');
-        value = decodeURIComponent(value);
 
         return { ...result, [key]: value };
     }, {})
