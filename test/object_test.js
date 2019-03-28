@@ -60,6 +60,24 @@ describe('index', () => {
     });
 });
 
+
+describe('find', () => {
+    let arr = null;
+    beforeEach(() =>  {
+        arr = [{name: 'baukh', age: 31}, {name: 'cc', age: 30}, {name: 'kouz', age: 29}, {name: 'rabbit', age: 28}];
+    });
+
+    afterEach(() =>  {
+        arr = null;
+    });
+
+    it('返回值验证', () => {
+        expect(find(arr, 'name', 'baukh').length).toBe(1);
+        expect(find(arr, 'age', 30).length).toEqual(1);
+        expect(find(arr, 'age', 33).length).toEqual(0);
+    });
+});
+
 describe('clone', () => {
     it('返回值验证', () => {
         let o1 = {name: 'cc', age: 31};

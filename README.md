@@ -33,9 +33,9 @@ jeasy.moment('1988-01-02 12:12:22');
 jeasy.moment(1547285063173);
 
 // format
-jeasy.moment(1547285063173).format("YYYY-MM-DD"); // 2019-1-12
-jeasy.moment(1547285063173).format("YYYY年MM月DD日"); // 2019年1月12日
-jeasy.moment(1547285063173).format("YYYY-MM-DD HH:mm:ss"); // 2019-1-12 17:24:23
+jeasy.moment(1547285063173).format("YYYY-MM-DD"); // 2019-01-12
+jeasy.moment(1547285063173).format("YYYY年MM月DD日"); // 2019年01月12日
+jeasy.moment(1547285063173).format("YYYY-MM-DD HH:mm:ss"); // 2019-01-12 17:24:23
 
 // 获取年月日
 jeasy.moment(1547285063173).fullYear; // 2019
@@ -82,6 +82,14 @@ let arr = [{name: 'baukh', age: 31}, {name: 'cc', age: 31}];
 jeasy.index(arr, o1); // 1
 jeasy.index(arr, o2); // -1
 jeasy.index(arr, o3); // 0
+```
+
+#### jeasy.find(array, key, value) `通过指定字段筛选Array`
+```javascript
+const arr = [{name: 'baukh', age: 31}, {name: 'cc', age: 30}, {name: 'kouz', age: 29}, {name: 'rabbit', age: 28}];
+jeasy.find(arr, 'name', 'baukh'); // [{name: 'baukh', age: 31}]
+jeasy.find(arr, 'age', 29); // [{name: 'kouz', age: 29}]
+jeasy.find(arr, 'age', 33); // []
 ```
 
 #### jeasy.clone(obj) `clone 对象`
@@ -166,6 +174,30 @@ document.body.style.fontWeight = '400';
 
 jeasy.getTextWidth('aaa'); // 18
 jeasy.getTextWidth('测试宽度'); // 48
+```
+
+### Number `数字相关`
+#### jeasy.toPercentile(value, decimal, fixed) `浮点数转换百分位`
+```javascript
+// @param value: 需要转换的数值
+// @param decimal: 保留小数点位数
+// @param fixed: 是否强制保留decimal指定的位数
+// @returns {*}: 返回百分位格式的字符串
+jeasy.toPercentile(0.1230123, 1); // '12.3%'
+jeasy.toPercentile(0.1230123, 2); // '12.30%'
+jeasy.toPercentile(0.1230123, 2, false); // '12.3%'
+```
+
+#### jeasy.toThousands(value, decimal, fixed) `浮点数转换千分位`
+```javascript
+// @param value: 需要转换的数值
+// @param decimal: 保留小数点位数
+// @param fixed: 是否强制保留decimal指定的位数
+// @returns {*}: 返回千分位格式的字符串
+jeasy.toThousands(value, 1); // '123.0‰'
+jeasy.toThousands(value, 1, false); // '123‰'
+jeasy.toThousands(value, 2); // '123.01‰'
+jeasy.toThousands(value, 2, false); // '123.01‰'
 ```
 
 ### File `文件相关`

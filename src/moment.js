@@ -98,12 +98,12 @@ class Moment {
     format(format) {
         return format
         .replace(/YYYY/i, this.fullYear)
-        .replace(/YY/i, this.year)
-        .replace(/MM/, this.month)
-        .replace(/DD/i, this.date)
-        .replace(/HH/i, this.hour)
-        .replace(/mm/, this.minute)
-        .replace(/ss/i, this.second);
+        .replace(/YY/i, this.year < 10 ? `0${this.year}` : this.year)
+        .replace(/MM/, this.month < 10 ? `0${this.month}` : this.month)
+        .replace(/DD/i, this.date < 10 ? `0${this.date}` : this.date)
+        .replace(/HH/i, this.hour < 10 ? `0${this.hour}` : this.hour)
+        .replace(/mm/, this.minute < 10 ? `0${this.minute}` : this.minute)
+        .replace(/ss/i, this.second < 10 ? `0${this.second}` : this.second);
     }
 }
 const moment = value => {

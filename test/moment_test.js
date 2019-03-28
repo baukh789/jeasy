@@ -149,41 +149,23 @@ describe('moment(value)', () => {
 });
 
 describe('moment(value).format(format)', () =>  {
-    // 这里不去验证时区， 所以这里的测试需要通过 Date来验证
-    let now = new Date(1547285063173);
-    let fullYeay = now.getFullYear();
-    let month = now.getMonth() + 1;
-    let date = now.getDate();
-    let hour = now.getHours();
-    let minute = now.getMinutes();
-    let second = now.getSeconds();
-
-    afterAll(() => {
-        now = null;
-        fullYeay = null;
-        month = null;
-        date = null;
-        hour = null;
-        minute = null;
-        second = null;
-    });
-    it('moment(1547285063173).format("YYYY年MM月DD日")', () => {
-        expect(moment(1547285063173).format('YYYY年MM月DD日')).toBe(`${fullYeay}年${month}月${date}日`);
+    it('moment(19870102102003).format("YYYY年MM月DD日")', () => {
+        expect(moment(19870102102003).format('YYYY年MM月DD日')).toBe('1987年01月02日');
     });
 
-    it('moment(1547285063173).format("YYYY年MM月DD日HH时mm分ss秒")', () => {
-        expect(moment(1547285063173).format('YYYY年MM月DD日HH时mm分ss秒')).toBe(`${fullYeay}年${month}月${date}日${hour}时${minute}分${second}秒`);
+    it('moment(19870102102003).format("YYYY年MM月DD日HH时mm分ss秒")', () => {
+        expect(moment(19870102102003).format('YYYY年MM月DD日HH时mm分ss秒')).toBe('1987年01月02日10时20分03秒');
     });
 
-    it('moment(1547285063173).format("YYYY/MM/DD HH:mm:ss")', () => {
-        expect(moment(1547285063173).format('YYYY/MM/DD HH:mm:ss')).toBe(`${fullYeay}/${month}/${date} ${hour}:${minute}:${second}`);
+    it('moment(19870102102003).format("YYYY/MM/DD HH:mm:ss")', () => {
+        expect(moment(19870102102003).format('YYYY/MM/DD HH:mm:ss')).toBe('1987/01/02 10:20:03');
     });
 
-    it('moment(1547285063173).format("YYYY-MM-DD HH:mm:ss")', () => {
-        expect(moment(1547285063173).format('YYYY-MM-DD HH:mm:ss')).toBe(`${fullYeay}-${month}-${date} ${hour}:${minute}:${second}`);
+    it('moment(19870102102003).format("YYYY-MM-DD HH:mm:ss")', () => {
+        expect(moment(19870102102003).format('YYYY-MM-DD HH:mm:ss')).toBe('1987-01-02 10:20:03');
     });
 
-    it('moment(1547285063173).format("yyyy-MM-dd hh:mm:ss")', () => {
-        expect(moment(1547285063173).format('yyyy-MM-dd hh:mm:ss')).toBe(`${fullYeay}-${month}-${date} ${hour}:${minute}:${second}`);
+    it('moment(19870102102003).format("yyyy-MM-dd hh:mm:ss")', () => {
+        expect(moment(19870102102003).format('yyyy-MM-dd hh:mm:ss')).toBe('1987-01-02 10:20:03');
     });
 });
