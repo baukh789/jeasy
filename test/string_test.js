@@ -24,6 +24,7 @@ describe('toHyphen', () => {
 describe('toFormData', () => {
     it('测试效果', () => {
         expect(toFormData('name=zhangsan&age=22&gender=male')).toEqual({name:'zhangsan', age: '22', gender:'male'});
+        expect(toFormData('name=zhangsan&age=22&gender=male&birth=')).toEqual({name:'zhangsan', age: '22', gender:'male', birth: ''});
         expect(toFormData('?name=zhangsan&age=22&gender=male&other={gender: "male"}')).toEqual({name: "zhangsan", age: "22", gender: "male", other: "{gender: \"male\"}"});
     })
 });

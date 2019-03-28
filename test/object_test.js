@@ -157,9 +157,15 @@ describe('trim', () => {
 
 describe('toQueryString', () => {
     it('验证queryString转换效果', () => {
-        const obj1 = { name:'zhangsan', age: 12 };
-        const obj2 = { name: 'zhangsan', params: { name: 'zhangsan', age: 12 }, page: { currentPage: 1, pageSize: 10 }, other: null };
+        let obj1 = { name:'zhangsan', age: 12 };
+        let obj2 = { name:'zhangsan', age: 12, birth: ''};
+        let obj3 = { name: 'zhangsan', params: { name: 'zhangsan', age: 12 }, page: { currentPage: 1, pageSize: 10 }, other: null };
         expect(toQueryString(obj1)).toBe('name=zhangsan&age=12');
-        expect(toQueryString(obj2)).toBe('name=zhangsan&params={"name":"zhangsan","age":12}&page={"currentPage":1,"pageSize":10}&other=null')
+        expect(toQueryString(obj2)).toBe('name=zhangsan&age=12&birth=');
+        expect(toQueryString(obj3)).toBe('name=zhangsan&params={"name":"zhangsan","age":12}&page={"currentPage":1,"pageSize":10}&other=null');
+
+        obj1 = null;
+        obj2 = null;
+        obj3 = null;
     });
 });

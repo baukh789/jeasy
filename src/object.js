@@ -122,10 +122,9 @@ export const trim = obj => {
 
 /**
  * Object转换为queryString
- * @param {Object} formData 
+ * @param {Object} formData
  */
 export function toQueryString(formData) {
-
     let result = '';
     for(let key in formData) {
         let value = formData[key];

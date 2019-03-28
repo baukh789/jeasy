@@ -138,9 +138,20 @@ jeasy.trim(o); // {name: 'kouzi', age: 28, gender: 0}
 // 传参为字符串
 let o = '  baukh  ';
 jeasy.trim(o); // baukh
+```
 
-// object的形式转换为querystring
+### jeasy.toQueryString(formData) `Object转换为queryString`
+```javascript
+// 传参为常规json
 jeasy.toQueryString({ name:'zhangsan', age: 12 }); // 'name=zhangsan&age=12'
+
+// 传参存在空值的json
+jeasy.toQueryString({ name:'zhangsan', age: '' }); // 'name=zhangsan&age='
+
+// 传参存在null值和对象的json
+jeasy.toQueryString({ name: 'zhangsan', params: { name: 'zhangsan', age: 12 }, page: { currentPage: 1, pageSize: 10 }, other: null });
+// => 'name=zhangsan&params={"name":"zhangsan","age":12}&page={"currentPage":1,"pageSize":10}&other=null'
+
 ```
 
 ### String `字符串相关`
@@ -156,7 +167,17 @@ jeasy.toHyphen('FontSize'); // -font-size
 
 ### jeasy.toFormData(str) `queryString的形式解析成对象`
 ```javascript
+// 常规值
 jeasy.toFormData('name=zhangsan&age=22&gender=male') //{name:'zhangsan', age: '22', gender:'male'}
+
+// 首字符为?号型式
+jeasy.toFormData('?name=zhangsan&age=22&gender=male') //{name:'zhangsan', age: '22', gender:'male'}
+
+// 包含空值
+jeasy.toFormData('name=zhangsan&birth=') //{name:'zhangsan', birth:''}
+
+// 包含类对像值
+jeasy.toFormData('name=zhangsan&other={gender: "male"}') //{name:'zhangsan', other: "{gender: \"male\"}"}}
 ```
 
 ### Text `文本相关`
