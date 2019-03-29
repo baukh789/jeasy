@@ -70,6 +70,8 @@ module.exports = function (config) {
 
 		// webpack config: https://github.com/webpack-contrib/karma-webpack
 		webpack: {
+            mode: 'development',
+
 			//入口文件配置
 			entry: {
 				js: './test/index.js'

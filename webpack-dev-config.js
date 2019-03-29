@@ -1,9 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const genRules = require('./webpack-common.loader');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { version } = require('./package.json');
 
 const config = {
+    mode: 'development',
+
 	// map
 	devtool : 'source-map',  // TODO  http://www.css88.com/doc/webpack2/configuration/devtool/
 
@@ -32,6 +35,17 @@ const config = {
             'process.env': {
                 VERSION: JSON.stringify(version)
             }
+        }),
+
+        // 使用交互式可缩放树形图可视化webpack输出文件的大小
+        // https://www.npmjs.com/package/webpack-bundle-analyzer
+        new BundleAnalyzerPlugin({
+            // 是否为静态导出
+            // analyzerMode: 'static',
+            defaultSizes: 'parsed',
+
+            // 是否启动后打开窗口
+            openAnalyzer: false
         })
     ],
 	// 文件导出的配置

@@ -3,9 +3,11 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const genRules = require('./webpack-common.loader');
 const buildPath = path.join(__dirname, "dist");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { version } = require('./package.json');
 
 const config = {
+    mode: 'production',
 
 	// 入口文件所在的上下文
 	context: path.join(__dirname, "src/"),
@@ -32,6 +34,21 @@ const config = {
         libraryTarget: "umd"
 	},
 
+
+    // 优化代码
+    optimization: {
+        minimizer: [
+            // 压缩js
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    cache: true,
+                    parallel: true,
+                    sourceMap: true,
+                    warnings: false
+                }
+            })
+        ]
+    },
 	// 以插件形式定制webpack构建过程
 	plugins: [
 		// 将文件复制到构建目录
@@ -46,15 +63,7 @@ const config = {
             'process.env': {
                 VERSION: JSON.stringify(version)
             }
-        }),
-
-		// 使用webpack内置插件压缩js
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false
-			},
-			sourceMap: false // 是否生成map文件
-		})
+        })
 	],
 
 	// 处理项目中的不同类型的模块。
