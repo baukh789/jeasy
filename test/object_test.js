@@ -1,5 +1,5 @@
 'use strict';
-import { equal, index, find, clone, isEmpty, type, trim, toQueryString } from '../src/object';
+import { equal, index, find, clone, isEmpty, type, trim, clear, toQueryString } from '../src/object';
 
 describe('equal', () => {
     it('验证对象', () => {
@@ -154,6 +154,89 @@ describe('trim', () => {
     });
 });
 
+describe('clear', () => {
+    it('一级数据处理', () => {
+        let o = {
+            a: 1,
+            b: null,
+            c: undefined,
+            d: ''
+        }
+
+        expect(clear(o)).toEqual({
+            a: 1,
+            d: ''
+        });
+
+        o = null;
+    });
+
+    it('嵌套数据处理', () => {
+        let o = {
+            a: 1,
+            b: null,
+            c: undefined,
+            d: '',
+            e: [{
+                a: 1,
+                b: null,
+                c: undefined,
+                d: '',
+                e: [{
+                    a: 1,
+                    b: null,
+                    c: undefined,
+                    d: '',
+                }]
+            }],
+            f: {
+                a: 1,
+                b: null,
+                c: undefined,
+                d: '',
+                e: [{
+                    a: 1,
+                    b: null,
+                    c: undefined,
+                    d: '',
+                    e: [{
+                        a: 1,
+                        b: null,
+                        c: undefined,
+                        d: '',
+                    }]
+                }],
+            }
+        }
+
+        expect(clear(o)).toEqual({
+            a: 1,
+            d: '',
+            e: [{
+                a: 1,
+                d: '',
+                e: [{
+                    a: 1,
+                    d: '',
+                }]
+            }],
+            f: {
+                a: 1,
+                d: '',
+                e: [{
+                    a: 1,
+                    d: '',
+                    e: [{
+                        a: 1,
+                        d: '',
+                    }]
+                }],
+            }
+        });
+
+        o = null;
+    });
+});
 
 describe('toQueryString', () => {
     it('验证queryString转换效果', () => {

@@ -98,7 +98,7 @@ export const type = value => {
 };
 
 /**
- * 清除JSON中为[null, undefined]的字段
+ * 传入为字符串时: 清除前后空格; 传入为JSON时: 非递归清除为[null, undefined]的字段, 不会修改原对象
  * @param obj: 支持字符串和对象两种格式
  * @returns {{}}
  */
@@ -119,6 +119,37 @@ export const trim = obj => {
     }, {});
 };
 
+/**
+ * 递归清除JSON中为[null, undefined]的字段，会修改原对象
+ * @param obj
+ * @returns {*}
+ */
+export const clear = obj => {
+    for (let key in obj) {
+        let o = obj[key];
+        switch (type(o)) {
+            case 'null': {
+                delete obj[key];
+                break;
+            }
+            case 'undefined': {
+                delete obj[key];
+                break;
+            }
+            case 'object': {
+                clear(o);
+                break;
+            }
+            case 'array': {
+                o.forEach(item => {
+                    clear(item);
+                });
+                break;
+            }
+        }
+    }
+    return obj;
+}
 
 /**
  * Object转换为queryString

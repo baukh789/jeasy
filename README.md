@@ -129,7 +129,7 @@ jeasy.type(nodeList); // nodeList
 jeasy.type(divEle); // element
 ```
 
-#### jeasy.trim(json) `清除JSON中为[null, undefined]的字段`
+#### jeasy.trim(json) `传入为字符串时: 清除前后空格; 传入为JSON时: 非递归清除为[null, undefined]的字段, 不会修改原对象`
 ```javascript
 // 传参为对象
 let o = {name: 'kouzi', age: 28, like: null, title: undefined, gender: 0};
@@ -138,6 +138,43 @@ jeasy.trim(o); // {name: 'kouzi', age: 28, gender: 0}
 // 传参为字符串
 let o = '  baukh  ';
 jeasy.trim(o); // baukh
+```
+
+### jeasy.clear(json) `递归清除JSON中为[null, undefined]的字段，会修改原对象`
+```
+let o = {
+    a: 1,
+    b: null,
+    c: undefined,
+    d: '',
+    e: [{
+        a: 1,
+        b: null,
+        c: undefined,
+        d: ''
+    }],
+    f: {
+        a: 1,
+        b: null,
+        c: undefined,
+        d: ''
+    }
+};
+const o2 = jeasy.clear(o); 
+/* o 与 o2相同，原对象o也被修改
+{
+   a: 1,
+   d: '',
+   e: [{
+       a: 1,
+       d: ''
+   }],
+   f: {
+       a: 1,
+       d: ''
+   }
+}
+*/
 ```
 
 ### jeasy.toQueryString(formData) `Object转换为queryString`
