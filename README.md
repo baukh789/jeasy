@@ -129,7 +129,7 @@ jeasy.type(nodeList); // nodeList
 jeasy.type(divEle); // element
 ```
 
-#### jeasy.trim(json) `传入为字符串时: 清除前后空格; 传入为JSON时: 非递归清除为[null, undefined]的字段, 不会修改原对象`
+#### jeasy.trim(json, deep) `传入为字符串时: 清除前后空格; 传入为JSON时: 通过第二个参数指定是否递归清除为[null, undefined]的字段, 不会修改原对象`
 ```javascript
 // 传参为对象
 let o = {name: 'kouzi', age: 28, like: null, title: undefined, gender: 0};
@@ -138,10 +138,8 @@ jeasy.trim(o); // {name: 'kouzi', age: 28, gender: 0}
 // 传参为字符串
 let o = '  baukh  ';
 jeasy.trim(o); // baukh
-```
 
-### jeasy.clear(json) `递归清除JSON中为[null, undefined]的字段，会修改原对象`
-```
+// 递归清除JSON中为[null, undefined]的字段
 let o = {
     a: 1,
     b: null,
@@ -160,8 +158,8 @@ let o = {
         d: ''
     }
 };
-const o2 = jeasy.clear(o); 
-/* o 与 o2相同，原对象o也被修改
+jeasy.trim(o, true);
+/* 
 {
    a: 1,
    d: '',

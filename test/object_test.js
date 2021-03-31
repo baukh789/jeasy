@@ -152,26 +152,36 @@ describe('trim', () => {
 
         o = null;
     });
-});
 
-describe('clear', () => {
-    it('一级数据处理', () => {
+    it('json 无递归', () => {
         let o = {
             a: 1,
             b: null,
             c: undefined,
-            d: ''
+            d: '',
+            e: {
+                a: 1,
+                b: null,
+                c: undefined,
+                d: ''
+            }
         }
 
-        expect(clear(o)).toEqual({
+        expect(trim(o)).toEqual({
             a: 1,
-            d: ''
+            d: '',
+            e: {
+                a: 1,
+                b: null,
+                c: undefined,
+                d: ''
+            }
         });
 
         o = null;
     });
 
-    it('嵌套数据处理', () => {
+    it('json 递归数据处理', () => {
         let o = {
             a: 1,
             b: null,
@@ -209,7 +219,7 @@ describe('clear', () => {
             }
         }
 
-        expect(clear(o)).toEqual({
+        expect(trim(o, true)).toEqual({
             a: 1,
             d: '',
             e: [{
