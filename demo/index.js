@@ -6,6 +6,11 @@ import jeasy from '../src/index';
     console.log(d);
     console.log(`${d.fullYear}年${d.month}月${d.date}日`);
 
+
+    var o = {"code":"1","message":"成功","data":{"xdate":["2020/04","2020/05","2020/06","2020/07","2020/08","2020/09","2020/10","2020/11","2020/12","2021/01","2021/02","2021/03","2021/04"],"data":{"customers":{"customers":[0,0,0,0,0,0,0,0,0,0,0,0,0]},"sendNum":{"SMS":[0,0,0,0,0,0,0,0,0,0,0,0,0],"TAOBAO_DISCOUNT":[0,0,0,0,0,0,0,0,0,0,0,0,0],"VSMS":[0,0,0,0,0,0,0,0,0,0,0,0,0],"TAOBAO_SEND_COUPON":[0,0,0,0,0,0,0,0,0,0,0,0,0],"EDM":[0,0,0,0,0,0,0,0,0,0,0,0,0]},"profit":{"profit":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]}},"show":true}};
+
+    console.log(o);
+    console.log(jeasy.trim(o, true));
     // console.log(d.format('YYYY-MM-DD HH:mm:ss'));
     //
     // const d2 = jeasy.moment('1987-11-22');

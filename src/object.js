@@ -110,25 +110,30 @@ export const trim = (obj, deep) => {
     }
 
     // object
-    return Object.keys(obj).reduce((prev, cur) => {
-        let curValue = obj[cur];
-        const valType = type(curValue);
-        if (valType === 'undefined' || valType === 'null') {
+    if (type(obj) === 'object') {
+        return Object.keys(obj).reduce((prev, cur) => {
+            let curValue = obj[cur];
+            const valType = type(curValue);
+            if (valType === 'undefined' || valType === 'null') {
+                return prev;
+            }
+            if (deep && valType === 'object') {
+                prev[cur] = trim(curValue, deep);
+                return prev;
+            }
+            if (deep && valType === 'array') {
+                prev[cur] = curValue.map(item => {
+                    return trim(item, deep);
+                });
+                return prev;
+            }
+            prev[cur] = curValue;
             return prev;
-        }
-        if (deep && valType === 'object') {
-            prev[cur] = trim(curValue, deep);
-            return prev;
-        }
-        if (deep && valType === 'array') {
-            prev[cur] = curValue.map(item => {
-               return trim(item, deep);
-            });
-            return prev;
-        }
-        prev[cur] = curValue;
-        return prev;
-    }, {});
+        }, {});
+    }
+
+    // 其它
+    return obj;
 };
 
 /**
