@@ -50,6 +50,9 @@ jeasy.moment(1547285063173).second; // 23
 
 // 获取周
 jeasy.moment(1547285063173).day; // 6
+
+// 指定时区获取格式为 2019-01-12 17:24:23 的字符串
+jeasy.moment(1547285063173, 8).format("YYYY-MM-DD HH:mm:ss"); // 2019-01-12 17:24:23
 ```
 
 ### Object `对象与JSON相关`

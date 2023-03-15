@@ -169,3 +169,12 @@ describe('moment(value).format(format)', () =>  {
         expect(moment(19870102102003).format('yyyy-MM-dd hh:mm:ss')).toBe('1987-01-02 10:20:03');
     });
 });
+
+describe('moment(value, timezone)', () =>  {
+    it('moment(1678871347085, 8)', () => {
+        expect(moment(1678871347085, 8).format('YYYY年MM月DD日HH时mm分')).toBe('2023年03月15日17时09分');
+    });
+    it('moment(1678871347085, 6)', () => {
+        expect(moment(1678871347085, 6).format('YYYY年MM月DD日HH时mm分')).toBe('2023年03月15日15时09分');
+    });
+});
